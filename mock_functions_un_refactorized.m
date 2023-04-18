@@ -60,7 +60,7 @@ for i=1:length(hyper_epoch_less_than_minus50)
 
     plot(f, time_in_s(start_time:end_time), hyper_Vm(start_time:end_time, hyper_epoch_less_than_minus50(i)))
     
-    tau_array(i) = tau_array, f.c;
+    tau_array(i) = f.c;
     
 
 end
