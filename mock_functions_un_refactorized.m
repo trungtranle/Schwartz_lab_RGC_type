@@ -135,11 +135,17 @@ for i=[1:size(depol_current_level_pA, 1)]
     
     test_spike = depol_Vm(:,i);
 
-    peks = findpeaks(test_spike,50000, 'MinPeakProminence',6, 'MinPeakHeight', 0, 'MinPeakDistance', 0.001);
-    findpeaks(test_spike,50000, 'MinPeakProminence',6, 'MinPeakHeight', 0, 'MinPeakDistance', 0.001);
-  
+    peks = findpeaks(test_spike(start_time:end_time),50000, 'MinPeakProminence',6, ...
+        'MinPeakHeight', 0, 'MinPeakDistance', 0.001);
+
     n_pks_array(i) = size(peks, 1);
 end
 
 hold off;
-    
+
+figure;
+yq = interp1(depol_current_level_pA * resistance.R_MOhm / 1000, n_pks_array, [10:3:30], "linear");
+plot(depol_current_level_pA * resistance.R_MOhm / 1000, n_pks_array, "o-", ...
+    [10:5:50], yq, ":")
+
+
