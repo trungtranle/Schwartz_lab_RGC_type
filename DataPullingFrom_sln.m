@@ -11,4 +11,15 @@ results = fetch(sln_results.DatasetMultiPulsevaryCurrent * t, '*');
 
 % 63 cells, 68 datasets.
 
-%%
+%% Datacheck
+celltypes = {results.cell_type};
+tbl_celltype = countlabels(celltypes)
+figure();
+bar(tbl_celltype.Label, tbl_celltype.Count);
+xlabel('Confirmed cell type');
+ylabel('Cells');
+text(1, 17, "Total = 63 cells, 68 datasets");
+set(gca, 'FontSize', 15, 'TickDir', 'out');
+set(gcf, "Color", [1 1 1]);
+box off;
+
