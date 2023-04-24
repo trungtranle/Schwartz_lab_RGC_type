@@ -1,14 +1,16 @@
 % Provided that the result_table was already loaded
+result_table = results(4)
+
 %% Set things up
 start_time = result_table.pre_time_ms * 10^-3 * result_table.sample_rate;
 end_time = start_time + result_table.stim_time_ms * 10^-3 *result_table.sample_rate;
-hyper_current_epoch = find(result_table.inj_current{1,1} < 0);
-depol_current_epoch = find(result_table.inj_current{1,1} > 0);
-hyper_current_level_pA = result_table.inj_current{1,1}(hyper_current_epoch); 
-depol_current_level_pA = result_table.inj_current{1,1}(depol_current_epoch);
-hyper_Vm = result_table.example_traces{1,1}(hyper_current_epoch,:);
+hyper_current_epoch = find(result_table.inj_current < 0);
+depol_current_epoch = find(result_table.inj_current > 0);
+hyper_current_level_pA = result_table.inj_current(hyper_current_epoch); 
+depol_current_level_pA = result_table.inj_current(depol_current_epoch);
+hyper_Vm = result_table.example_traces(hyper_current_epoch,:);
 hyper_Vm = hyper_Vm';
-depol_Vm = result_table.example_traces{1,1}(depol_current_epoch,:);
+depol_Vm = result_table.example_traces(depol_current_epoch,:);
 depol_Vm = depol_Vm';
 time_in_s = linspace(0, size(hyper_Vm,1), size(hyper_Vm,1)) / result_table.sample_rate;
 %% Plot hyper epoch
