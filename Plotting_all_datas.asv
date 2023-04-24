@@ -22,23 +22,19 @@ toc
 %%
 tbl = table([1:68]',{results.cell_type}',R_array, fit_array,tau_array, tau_sd_array, capacitance_array, ...
     'VariableNames', {'No','Cell_type','Resistance', 'Rsquared', 'Tau', 'Tau_sd', 'Capacitance'})
-
 %%
 figure;
 boxplot(tbl.Resistance(tbl.Rsquared > 0.9), tbl.Cell_type(tbl.Rsquared > 0.9));
 xlabel('Cell types');
 ylabel('Input Resistance (M\Omega)');
-box off;
 
 %%
 figure;
 boxplot(tbl.Tau, tbl.Cell_type);
 xlabel('Cell types');
 ylabel('Tau (ms)');
-box off;
+
 %%
 figure;
-boxplot(tbl.Capacitance(tbl.Rsquared > 0.9), tbl.Cell_type(tbl.Rsquared > 0.9));
-xlabel('Cell types');
-ylabel('Capacitance (pF)');
-box off;
+boxplot(tbl.Capacitance, tbl.Cell_type);
+xlabel('Cell types')
