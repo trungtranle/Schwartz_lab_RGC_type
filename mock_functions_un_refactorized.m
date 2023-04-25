@@ -1,5 +1,5 @@
 % Provided that the result_table was already loaded
-result_table = results(12)
+result_table = results(2)
 
 %% Set things up
 start_time = result_table.pre_time_ms * 10^-3 * result_table.sample_rate;
@@ -138,11 +138,14 @@ for i=[1:size(depol_current_level_pA, 1)]
     
     test_spike = depol_Vm(:,i);
 
-    peks = findpeaks(test_spike,50000, 'MinPeakProminence',6, 'MinPeakHeight', 0, 'MinPeakDistance', 0.001);
-     findpeaks(test_spike,50000, 'MinPeakProminence',6, 'MinPeakHeight', 0, 'MinPeakDistance', 0.001);
+    peks = findpeaks(test_spike(start_time : end_time),50000, 'MinPeakProminence',6, 'MinPeakHeight', -10, 'MinPeakDistance', 0.001);
+    findpeaks(test_spike,50000, 'MinPeakProminence',6, 'MinPeakHeight', -10, 'MinPeakDistance', 0.001);
   
     n_pks_array(i) = size(peks, 1);
 end
 
 hold off;
+
+
     
+%%

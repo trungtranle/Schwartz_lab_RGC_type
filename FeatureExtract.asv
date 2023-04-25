@@ -54,10 +54,7 @@ end
 %Return Capacitance
 capacitance_pF = tau.Tau_ms / resistance.R_MOhm * 100;
 
-%% Sag
-min_Vm = min(hyper_Vm(:,hyper_current_level_pA <= -50), [], 1);
-fit_sag_peak_vs_stable = fitlm(min_Vm, stable_Vm(hyper_current_level_pA <= -50));
-sag_coeff = fit_sag_peak_vs_stable.Coefficients(2,1);
+
 
 %% Return values
 result_struct.resistance = resistance;
@@ -66,5 +63,4 @@ result_struct.capacitance_pF = capacitance_pF;
 result_struct.depol_current_level = depol_current_level_pA;
 result_struct.hyper_current_level = hyper_current_level_pA;
 result_struct.resting_Vm = result_table.vrest;
-result_struct.sag_coeff = sag_coeff;
 end
