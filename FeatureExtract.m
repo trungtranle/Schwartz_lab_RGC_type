@@ -59,6 +59,8 @@ min_Vm = min(hyper_Vm(:,hyper_current_level_pA <= -50), [], 1);
 fit_sag_peak_vs_stable = fitlm(min_Vm, stable_Vm(hyper_current_level_pA <= -50));
 sag_coeff = fit_sag_peak_vs_stable.Coefficients(2,1);
 
+%%
+
 %% Return values
 result_struct.resistance = resistance;
 result_struct.tau = tau;
