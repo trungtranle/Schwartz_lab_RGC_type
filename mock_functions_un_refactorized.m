@@ -1,5 +1,5 @@
 % Provided that the result_table was already loaded
-result_table = results(2)
+result_table = results(6)
 
 %% Set things up
 start_time = result_table.pre_time_ms * 10^-3 * result_table.sample_rate;
